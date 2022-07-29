@@ -772,6 +772,16 @@ sensors.infrared.edison = {
     }]
 };
 
+sensors.infrared.robotino = {
+    title: 'INFRARED',
+    ports: [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9']],
+    modes: [{
+        name: 'DISTANCE',
+        type: 'Number',
+        unit: 'CM'
+    }],
+}
+
 sensors.irseeker = {};
 sensors.irseeker.ev3 = {
     title: 'IRSEEKER',
@@ -1056,6 +1066,8 @@ sensors.out.arduino = {
     ports: 'CONFIGURATION'
 };
 sensors.out.sensebox = sensors.out.arduino;
+sensors.out.robotino = sensors.out.arduino;
+
 sensors.pin = {};
 sensors.pin.calliope = {
     title: 'PIN',
@@ -1189,6 +1201,18 @@ sensors.line.mbot2 = {
     }],
     ports: 'CONFIGURATION'
 };
+
+sensors.odometry = {};
+sensors.odometry.robotino = {
+    title: 'ODOMETRY',
+    modes: [{
+        name: 'VALUE',
+        type: 'Number'
+    }],
+    slots: [['x', 'X'], ['y', 'Y'], ['θ', 'THETA']],
+    ports: 'CONFIGURATION',
+    portsHidden: true
+}
 
 sensors.rssi = {};
 sensors.rssi.calliope = {
@@ -1359,6 +1383,7 @@ sensors.timer.festobionicflower = sensors.timer.ev3;
 sensors.timer.mbot = sensors.timer.ev3;
 sensors.timer.mbot2 = sensors.timer.ev3;
 sensors.timer.sensebox = sensors.timer.ev3;
+sensors.timer.robotino = sensors.timer.ev3;
 
 sensors.touch = {};
 sensors.touch.ev3 = {
@@ -1413,6 +1438,17 @@ sensors.touch.festobionicflower = {
     }],
     ports: 'CONFIGURATION'
 };
+
+sensors.touch.robotino = {
+    title: 'TOUCH',
+    modes: [{
+        name: 'PRESSED',
+        type: 'Boolean',
+        question: true
+    }],
+    ports: 'CONFIGURATION',
+    portsHidden:true,
+}
 sensors.ultrasonic = {};
 sensors.ultrasonic.arduino = {
     title: 'ULTRASONIC',
@@ -1648,6 +1684,7 @@ sensorsAll.nano33ble = [sensors.out.nano33ble, sensors.key.nano33ble, sensors.ti
     sensors.motion.nano33ble, sensors.pulse.nano33ble, sensors.drop.nano33ble, sensors.rfid.nano33ble, sensors.gyro.nano33ble,
     sensors.accelerometer.arduino];
 sensorsAll.rob3rta = [sensors.pintouch.rob3rta, sensors.infrared.rob3rta, sensors.temperature.rob3rta, sensors.timer.rob3rta];
+sensorsAll.robotino = [sensors.timer.robotino, sensors.touch.robotino, sensors.infrared.robotino, sensors.odometry.robotino, sensors.out.robotino];
 
 function initSensors() {
     for (var sensor in sensors) {

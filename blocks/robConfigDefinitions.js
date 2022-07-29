@@ -106,6 +106,17 @@ Blockly.Blocks.robConfigDefinitions['pinsDigital'].microbit = function() {
     return array;
 };
 
+Blockly.Blocks.robConfigDefinitions['pinsDigital'].robotino = function() {
+    var array = createPins(1, 8, "DI");
+    return array;
+};
+
+Blockly.Blocks.robConfigDefinitions['pinsDigitalWrite'] = {};
+Blockly.Blocks.robConfigDefinitions['pinsDigitalWrite'].robotino = function() {
+    var array = createPins(1, 8, "DQ");
+    return array
+};
+
 Blockly.Blocks.robConfigDefinitions['pinsAnalog'] = {};
 Blockly.Blocks.robConfigDefinitions['pinsAnalog'].uno = function() {
     return createPins(0, 5, "A", "A");
@@ -144,6 +155,10 @@ Blockly.Blocks.robConfigDefinitions['pinsAnalog'].calliope = function() {
 Blockly.Blocks.robConfigDefinitions['pinsAnalog'].microbit = function() {
     var array = createPins(0, 4);
     array = array.concat(createPins(10, 10));
+    return array;
+};
+Blockly.Blocks.robConfigDefinitions['pinsAnalog'].robotino = function() {
+    var array = createPins(1, 8, "AI");
     return array;
 };
 
@@ -502,7 +517,7 @@ confBlocks.infrared.arduino = {
     ports: [
         ['output', 'OUTPUT']
     ],
-    pins: function(a) {
+    pins: function (a) {
         return Blockly.Blocks.robConfigDefinitions['pinsDigital'][a];
     },
     sensor: true,
@@ -512,13 +527,19 @@ confBlocks.infrared.arduino = {
         ['VCC', '5V']
     ]
 };
+confBlocks.infrared.robotino = {
+    title: 'INFRARED',
+    sensor: true,
+    inbuilt: true
+}
+
 confBlocks.temperature = {};
 confBlocks.temperature.arduino = {
     title: 'TEMPERATURE',
     ports: [
         ['output', 'OUTPUT']
     ],
-    pins: function(a) {
+    pins: function (a) {
         return Blockly.Blocks.robConfigDefinitions['pinsAnalog'][a];
     },
     sensor: true,
@@ -685,7 +706,7 @@ confBlocks.touch.festobionicflower = {
     ports: [
         ['touch', 'TOUCHED']
     ],
-    pins: function() {
+    pins: function () {
         return [
             ['PAD1', 'PAD1'],
             ['PAD2', 'PAD2']
@@ -694,6 +715,12 @@ confBlocks.touch.festobionicflower = {
     sensor: true,
     standardPins: ['PAD1'],
 };
+confBlocks.touch.robotino = {
+    title: 'TOUCH',
+    inbuilt: true,
+    sensor: true
+}
+
 
 confBlocks.drop = {};
 confBlocks.drop.arduino = {
@@ -701,7 +728,7 @@ confBlocks.drop.arduino = {
     ports: [
         ['S', 'S']
     ],
-    pins: function(a) {
+    pins: function (a) {
         return Blockly.Blocks.robConfigDefinitions['pinsAnalog'][a];
     },
     sensor: true,
@@ -794,6 +821,13 @@ confBlocks.oledssd1306i2c.arduino = {
     ]
 };
 
+confBlocks.odometry = {};
+confBlocks.odometry.robotino = {
+    title: 'ODOMETRY',
+    sensor: true,
+    inbuilt: true
+}
+
 confBlocks.lcdi2c = {};
 confBlocks.lcdi2c.arduino = {
     title: 'LCDI2C',
@@ -850,6 +884,15 @@ confBlocks.differentialdrive.mbot2 = {
             ['EM2', 'EM2']
         ];
     },
+    sensor: false,
+    inbuilt: true
+};
+confBlocks.omnidrive = {};
+confBlocks.omnidrive.robotino = {
+    inputs: [
+        ['WEIGHT_KG', '20']
+    ],
+    title: 'OMNIDRIVE',
     sensor: false,
     inbuilt: true
 };
@@ -1314,6 +1357,10 @@ confBlocks.encoder.mbot2 = {
             ['EM2', 'EM2']
         ];    },
 };
+confBlocks.encoder.robotino = {
+    title: 'ENCODER',
+    action: true,
+};
 
 confBlocks.digitalout = {};
 confBlocks.digitalout.arduino = {
@@ -1342,6 +1389,7 @@ confBlocks.digitalout.sensebox = {
     },
     sensor: true,
 };
+confBlocks.digitalout.robotino = confBlocks.digitalout.sensebox;
 confBlocks.digitalout.calliope = {
     title: 'DIGITALOUT',
     ports: [
@@ -1390,6 +1438,7 @@ confBlocks.analogout.arduino = {
     sensor: true,
 };
 confBlocks.analogout.sensebox = confBlocks.analogout.arduino;
+confBlocks.analogout.robotino = confBlocks.analogout.arduino;
 confBlocks.analogout.calliope = {
     title: 'ANALOGOUT',
     ports: [
@@ -1414,6 +1463,17 @@ confBlocks.digitalin.arduino = {
     sensor: false,
 };
 confBlocks.digitalin.sensebox = confBlocks.digitalin.arduino;
+confBlocks.digitalin.robotino = {
+    title: 'DIGITALIN',
+    ports: [
+        ['SENSOR_PIN', 'INPUT']
+    ],
+    pins: function(a) {
+        return Blockly.Blocks.robConfigDefinitions['pinsDigitalWrite'][a];
+    },
+    sensor: false,
+};
+
 confBlocks.digitalin.calliope = {
     title: 'DIGITALIN',
     ports: [

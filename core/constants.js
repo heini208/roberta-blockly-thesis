@@ -330,6 +330,7 @@ Blockly.TYPE_DROPDOWN = function(device, opt_handler) {
         case 'mbot2':
         case 'festobionic':
         case 'festobionicflower':
+        case 'robotino':
             return new Blockly.FieldDropdown([[Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'], [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
                 [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'], [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
                 [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'], [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
@@ -422,6 +423,7 @@ Blockly.LIST_TYPE_DROPDOWN = function(device) {
         case 'mbot2':
         case 'festobionic':
         case 'festobionicflower':
+        case 'robotino':
             return new Blockly.FieldDropdown([[Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'], [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
                 [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'], [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour']], function(option) {
                 this.sourceBlock_.updateType_(option);
